@@ -1,42 +1,54 @@
 {
-    "pokemon": [
-      {
-        "id": "61dbae02-c147-4e28-863c-db7bd402b2d6",
-        "name": "Squirtle",
-        "type": "Water",
-        "moves": [
-          "21 thrusters",
-          "12 rope climbs, 15 ft",
-          "15 thrusters",
-          "9 rope climbs, 15 ft",
-          "9 thrusters",
-          "6 rope climbs, 15 ft"
-        ],
-        "createdAt": "4/20/2022, 2:21:56 PM",
-        "updatedAt": "4/20/2022, 2:21:56 PM"
-      },
-      {
-        "id": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
-        "name": "Charmander",
-        "type": "Fire",
-        "moves": [
-          "15 deadlifts",
-          "15 hand-release push-ups"
-        ],
-        "createdAt": "1/25/2022, 1:15:44 PM",
-        "updatedAt": "3/10/2022, 8:21:56 AM"
-      },
-      {
-        "id": "d8be2362-7b68-4ea4-a1f6-03f8bc4eede7",
-        "name": "Bulbasaur",
-        "type": "Grass",
-        "exercises": [
-          "12 deadlifts",
-          "9 hang power cleans",
-          "6 push jerks"
-        ],
-        "createdAt": "11/20/2021, 5:39:07 PM",
-        "updatedAt": "11/20/2021, 5:39:07 PM"
-      }
-    ]
-  }
+  "pokemon": [
+    {
+      "id": "61dbae02-c147-4e28-863c-db7bd402b2d6",
+      "name": "Squirtle",
+      "type": "Water",
+      "moves": [
+        "Bubble",
+        "Bubble Gun",
+        "Tackle",
+        "Leer"
+      ],
+      "createdAt": "4/20/2022, 2:21:56 PM",
+      "updatedAt": "4/20/2022, 2:21:56 PM"
+    },
+    {
+      "id": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "name": "Charmander",
+      "type": "Fire",
+      "moves": [
+        "Ember",
+        "Scratch",
+        "Growl"
+      ],
+      "createdAt": "1/25/2022, 1:15:44 PM",
+      "updatedAt": "3/10/2022, 8:21:56 AM"
+    },
+    {
+      "id": "d8be2362-7b68-4ea4-a1f6-03f8bc4eede7",
+      "name": "Bulbasaur",
+      "type": "Grass",
+      "moves": [
+        "Vine Whip",
+        "Tackle",
+        "Defense Curl",
+        "Leech Seed"
+      ],
+      "createdAt": "11/20/2021, 5:39:07 PM",
+      "updatedAt": "11/20/2021, 5:39:07 PM"
+    },
+    {
+      "name": "Sandshrew",
+      "type": "Ground",
+      "moves": [
+        "Scratch",
+        "Growl",
+        "Sand Attack"
+      ],
+      "id": "80ce42c5-91de-45fb-8b57-ecb598a620d5",
+      "createdAt": "12/15/2022, 8:46:39 PM",
+      "updatedAt": "12/15/2022, 8:46:39 PM"
+    }
+  ]
+}
