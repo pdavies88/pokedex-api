@@ -11,8 +11,19 @@ const getOneEntry = (req, res) => {
 };
 
 const createNewEntry = (req, res) => {
-  const createdEntry = pokedexService.createNewEntry();
-  res.send("Create a new entry");
+  const { body } = req;
+  if (!body.name || !body.type || !body.moves) {
+    return;
+  }
+
+  const newEntry = {
+    name: body.name,
+    type: body.type,
+    moves: body.moves,
+  };
+
+  const createdEntry = pokedexService.createNewEntry(newEntry);
+  res.status(201).send({ status: "OK", data: createdEntry });
 };
 
 const updateOneEntry = (req, res) => {
