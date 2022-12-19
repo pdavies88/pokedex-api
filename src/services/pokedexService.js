@@ -1,8 +1,8 @@
 const { v4: uuid } = require("uuid");
 const Pokemon = require("../database/Entry");
 
-const getAllEntries = () => {
-  const allEntries = Pokemon.getAllPokemon();
+const getAllEntries = (filterParams) => {
+  const allEntries = Pokemon.getAllPokemon(filterParams);
   return allEntries;
 };
 
