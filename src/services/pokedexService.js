@@ -6,8 +6,8 @@ const getAllEntries = (filterParams) => {
   return allEntries;
 };
 
-const getOneEntry = (entryId) => {
-  const entry = Pokemon.getOneEntry(entryId);
+const getOneEntry = (pokedexId) => {
+  const entry = Pokemon.getOneEntry(pokedexId);
   return entry;
 };
 
@@ -22,13 +22,13 @@ const createNewEntry = (newEntry) => {
   return createdEntry;
 };
 
-const updateOneEntry = (entryId, changes) => {
-  const updatedEntry = Pokemon.updateOneEntry(entryId, changes);
+const updateOneEntry = (pokedexId, changes) => {
+  const updatedEntry = Pokemon.updateOneEntry(pokedexId, changes);
   return updatedEntry;
 };
 
-const deleteOneEntry = (entryId) => {
-  Pokemon.deleteOneEntry(entryId);
+const deleteOneEntry = (pokedexId) => {
+  Pokemon.deleteOneEntry(pokedexId);
 };
 
 module.exports = {

@@ -14,17 +14,18 @@ const getAllEntries = (req, res) => {
 };
 
 const getOneEntry = (req, res) => {
+  // URL Params extrapolation
   const {
-    params: { entryId },
+    params: { pokedexId },
   } = req;
-  if (!entryId) {
+  if (!pokedexId) {
     res.status(400).send({
       status: "FAILED",
-      data: { error: "Parameter ':entryId' can not be empty" },
+      data: { error: "Parameter ':pokedexId' can not be empty" },
     });
   }
   try {
-    const entry = pokedexService.getOneEntry(entryId);
+    const entry = pokedexService.getOneEntry(pokedexId);
     res.send({ status: "OK", data: entry });
   } catch (error) {
     res
@@ -65,16 +66,16 @@ const createNewEntry = (req, res) => {
 const updateOneEntry = (req, res) => {
   const {
     body,
-    params: { entryId },
+    params: { pokedexId },
   } = req;
-  if (!entryId) {
+  if (!pokedexId) {
     res.status(400).send({
       status: "FAILED",
-      data: { error: "Parameter ':entryId' can not be empty" },
+      data: { error: "Parameter ':pokedexId' can not be empty" },
     });
   }
   try {
-    const updatedEntry = pokedexService.updateOneEntry(entryId, body);
+    const updatedEntry = pokedexService.updateOneEntry(pokedexId, body);
     res.send({ status: "OK", data: updatedEntry });
   } catch (error) {
     res
@@ -85,16 +86,16 @@ const updateOneEntry = (req, res) => {
 
 const deleteOneEntry = (req, res) => {
   const {
-    params: { entryId },
+    params: { pokedexId },
   } = req;
-  if (!entryId) {
+  if (!pokedexId) {
     res.status(400).send({
       status: "FAILED",
-      data: { error: "Parameter ':entryId' can not be empty" },
+      data: { error: "Parameter ':pokedexId' can not be empty" },
     });
   }
   try {
-    pokedexService.deleteOneEntry(entryId);
+    pokedexService.deleteOneEntry(pokedexId);
     res.status(204).send({ status: "OK" });
   } catch (error) {
     res

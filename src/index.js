@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const apicache = require("apicache");
 const v1PokedexRouter = require("./v1/routes/pokedexRoutes");
+const { swaggerDocs: V1SwaggerDocs } = require("./v1/swagger");
 
 const app = express();
 const cache = apicache.middleware;
@@ -14,4 +15,5 @@ app.use("/api/v1/pokedex", v1PokedexRouter);
 
 app.listen(PORT, () => {
   console.log(`API is listening on port ${PORT}`);
+  V1SwaggerDocs(app, PORT);
 });

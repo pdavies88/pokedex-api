@@ -1,6 +1,35 @@
 const DB = require("./db.json");
 const { saveToDatabase } = require("./utils");
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Pokemon:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           example: 61dbae02-c147-4e28-863c-db7bd402b2d6
+ *         name:
+ *           type: string
+ *           example: Squirtle
+ *         type:
+ *           type: string
+ *           example: Water
+ *         equipment:
+ *           type: array
+ *           items:
+ *             type: string
+ *           example: ["Bubble", "Bubble Gun", "Tackle", "Leer"]
+ *         createdAt:
+ *           type: string
+ *           example: 4/20/2022, 2:21:56 PM
+ *         updatedAt:
+ *           type: string
+ *           example: 4/20/2022, 2:21:56 PM
+ */
+
 const getAllPokemon = (filterParams) => {
   try {
     let pokemon = DB.pokemon;
@@ -15,13 +44,13 @@ const getAllPokemon = (filterParams) => {
   }
 };
 
-const getOnePokemon = (entryId) => {
+const getOneEntry = (pokedexId) => {
   try {
-    const pokemon = DB.pokemon.find((pokemon) => pokemon.id === entryId);
+    const pokemon = DB.pokemon.find((pokemon) => pokemon.id === pokedexId);
     if (!pokemon) {
       throw {
         status: 400,
-        message: `Can't find pokemon with the id '${entryId}'`,
+        message: `Can't find pokemon with the id '${pokedexId}'`,
       };
     }
     return pokemon;
@@ -49,15 +78,15 @@ const createNewEntry = (newEntry) => {
   }
 };
 
-const updateOnePokemon = (entryId, changes) => {
+const updateOneEntry = (pokedexId, changes) => {
   try {
     const indexForUpdate = DB.pokemon.findIndex(
-      (pokemon) => pokemon.id === entryId
+      (pokemon) => pokemon.id === pokedexId
     );
     if (indexForUpdate === -1) {
       throw {
         status: 400,
-        message: `Can't find pokemon with the id '${entryId}'`,
+        message: `Can't find pokemon with the id '${pokedexId}'`,
       };
     }
     const updatedEntry = {
@@ -73,15 +102,15 @@ const updateOnePokemon = (entryId, changes) => {
   }
 };
 
-const deleteOnePokemon = (entryId) => {
+const deleteOneEntry = (pokedexId) => {
   try {
     const indexForDeletion = DB.pokemon.findIndex(
-      (pokemon) => pokemon.id === entryId
+      (pokemon) => pokemon.id === pokedexId
     );
     if (indexForDeletion === -1) {
       throw {
         status: 400,
-        message: `Can't find pokemon with the id '${entryId}'`,
+        message: `Can't find pokemon with the id '${pokedexId}'`,
       };
     }
     DB.pokemon.splice(indexForDeletion, 1);
@@ -93,8 +122,8 @@ const deleteOnePokemon = (entryId) => {
 
 module.exports = {
   getAllPokemon,
-  getOnePokemon,
+  getOneEntry,
   createNewEntry,
-  updateOnePokemon,
-  deleteOnePokemon,
+  updateOneEntry,
+  deleteOneEntry,
 };
