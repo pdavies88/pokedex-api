@@ -1,9 +1,15 @@
 const DB = require("./db.json");
 const { saveToDatabase } = require("./utils");
 
-const getAllPokemon = () => {
+const getAllPokemon = (filterParams) => {
   try {
-    return DB.pokemon;
+    let pokemon = DB.pokemon;
+    if (filterParams.type) {
+      return DB.pokemon.filter((pokemon) =>
+        pokemon.type.toLowerCase().includes(filterParams.type)
+      );
+    }
+    return pokemon;
   } catch (error) {
     throw { status: 500, message: error };
   }

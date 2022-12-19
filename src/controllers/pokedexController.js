@@ -1,8 +1,10 @@
 const pokedexService = require("../services/pokedexService");
 
 const getAllEntries = (req, res) => {
+  // Query parameters can be used for filtering or pagination
+  const { type } = req.query;
   try {
-    const allEntries = pokedexService.getAllEntries();
+    const allEntries = pokedexService.getAllEntries({ type });
     res.send({ status: "OK", data: allEntries });
   } catch (error) {
     res
