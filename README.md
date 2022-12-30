@@ -7,6 +7,7 @@
 - `npm i` to install packages
 - `npm run dev` to run localized API
 - API will be available at http://localhost:3000/ unless another port is specified during the `npm run dev` command
+- API Swagger docs are available at http://localhost:3000/api/v1/docs
 
 ### Endpoints Available
 

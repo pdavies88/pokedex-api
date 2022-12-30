@@ -8,20 +8,20 @@ const { saveToDatabase } = require("./utils");
  *     Pokemon:
  *       type: object
  *       properties:
- *         id:
- *           type: string
- *           example: 61dbae02-c147-4e28-863c-db7bd402b2d6
  *         name:
  *           type: string
  *           example: Squirtle
  *         type:
  *           type: string
  *           example: Water
- *         equipment:
+ *         moves:
  *           type: array
  *           items:
  *             type: string
  *           example: ["Bubble", "Bubble Gun", "Tackle", "Leer"]
+ *         id:
+ *           type: string
+ *           example: 61dbae02-c147-4e28-863c-db7bd402b2d6
  *         createdAt:
  *           type: string
  *           example: 4/20/2022, 2:21:56 PM
@@ -46,11 +46,13 @@ const getAllPokemon = (filterParams) => {
 
 const getOneEntry = (pokedexId) => {
   try {
-    const pokemon = DB.pokemon.find((pokemon) => pokemon.id === pokedexId);
+    const pokemon = DB.pokemon.find(
+      (pokemon) => pokemon.name.toLowerCase() === pokedexId.toLowerCase()
+    );
     if (!pokemon) {
       throw {
         status: 400,
-        message: `Can't find pokemon with the id '${pokedexId}'`,
+        message: `Can't find pokemon with the name '${pokedexId}'`,
       };
     }
     return pokemon;
@@ -62,7 +64,9 @@ const getOneEntry = (pokedexId) => {
 const createNewEntry = (newEntry) => {
   try {
     const isAlreadyAdded =
-      DB.pokemon.findIndex((pokemon) => pokemon.name === newEntry.name) > -1;
+      DB.pokemon.findIndex(
+        (pokemon) => pokemon.name.toLowerCase() === newEntry.name.toLowerCase()
+      ) > -1;
     if (isAlreadyAdded) {
       throw {
         status: 400,
@@ -81,12 +85,12 @@ const createNewEntry = (newEntry) => {
 const updateOneEntry = (pokedexId, changes) => {
   try {
     const indexForUpdate = DB.pokemon.findIndex(
-      (pokemon) => pokemon.id === pokedexId
+      (pokemon) => pokemon.name.toLowerCase() === pokedexId.toLowerCase()
     );
     if (indexForUpdate === -1) {
       throw {
         status: 400,
-        message: `Can't find pokemon with the id '${pokedexId}'`,
+        message: `Can't find pokemon with the name '${pokedexId}'`,
       };
     }
     const updatedEntry = {
@@ -105,12 +109,12 @@ const updateOneEntry = (pokedexId, changes) => {
 const deleteOneEntry = (pokedexId) => {
   try {
     const indexForDeletion = DB.pokemon.findIndex(
-      (pokemon) => pokemon.id === pokedexId
+      (pokemon) => pokemon.name.toLowerCase() === pokedexId.toLowerCase()
     );
     if (indexForDeletion === -1) {
       throw {
         status: 400,
-        message: `Can't find pokemon with the id '${pokedexId}'`,
+        message: `Can't find pokemon with the name '${pokedexId}'`,
       };
     }
     DB.pokemon.splice(indexForDeletion, 1);
